@@ -1,6 +1,5 @@
 package com.example.app2;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.app2.Json.MyInfo;
+import com.example.app2.Json.MyInfo;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -22,14 +22,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class registro extends AppCompatActivity {
+public class Registro extends AppCompatActivity {
     private Button Registro;
     private static final String TAG = "MainActivity";
     public static final String archivo = "archivo.json";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro);
+        setContentView(R.layout.activity_registro);
         List<MyInfo> list = new ArrayList<MyInfo>();
         Registro = findViewById(R.id.Registro);
         Button Registro = findViewById(R.id.Registro);
@@ -43,7 +43,7 @@ public class registro extends AppCompatActivity {
         Volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(registro.this, login.class);
+                Intent intent = new Intent(Registro.this, Login.class);
                 startActivity(intent);
             }
         });

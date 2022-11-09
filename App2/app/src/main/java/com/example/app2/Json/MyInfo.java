@@ -1,7 +1,5 @@
 package com.example.app2.Json;
 
-import android.widget.EditText;
-import com.example.app2.R;
 import java.io.Serializable;
 
 public class MyInfo implements Serializable {
@@ -73,4 +71,3 @@ public class MyInfo implements Serializable {
 
     }
 }
-

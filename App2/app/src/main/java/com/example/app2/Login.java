@@ -1,6 +1,5 @@
 package com.example.app2;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,9 +7,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.app2.Json.MyInfo;
 import com.example.app2.Json.MyInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     private List<MyInfo> list;
     public static String TAG = "mensaje";
     String json = null;
@@ -29,7 +33,7 @@ public class login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
         Button registro = findViewById(R.id.registro);
         Button Acceso = findViewById(R.id.Acceso);
         Button olvido = findViewById(R.id.olvido);
@@ -49,7 +53,7 @@ public class login extends AppCompatActivity {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(login.this, registro.class);
+                Intent i = new Intent(Login.this, com.example.app2.Registro.class);
                 startActivity(i);
             }
         });
@@ -57,7 +61,7 @@ public class login extends AppCompatActivity {
         olvido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(login.this, olvidocontra.class);
+                Intent i = new Intent(Login.this, com.example.app2.Olvido.class);
                 startActivity(i);
             }
         });
@@ -99,7 +103,7 @@ public class login extends AppCompatActivity {
             return;
         }
     }
-    private File getFile(){return new File(getDataDir() , registro.archivo);}
+    private File getFile(){return new File(getDataDir() , com.example.app2.Registro.archivo);}
 
     private boolean isFileExits(){
         File file = getFile();
@@ -112,14 +116,15 @@ public class login extends AppCompatActivity {
         int i = 0;
         for(MyInfo myInfo : list){
             if (myInfo.getUsuario().equals(usr)&&myInfo.getContraseña().equals(passw)){
-                Intent intent = new Intent(login.this, bienvenido.class);
+                Intent intent = new Intent(Login.this, com.example.app2.welcome_to_the_jungle.class);
+                intent.putExtra("Objeto", myInfo);
                 startActivity(intent);
                 i = 1;
 
             }
         }
         if (i == 0){
-            Toast.makeText(getApplicationContext(), "Datos Incorrectos",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "El usuario o contraseña son incorrectos ",Toast.LENGTH_LONG).show();
         }
     }
 }
